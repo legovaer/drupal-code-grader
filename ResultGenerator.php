@@ -293,9 +293,10 @@ class ResultGenerator {
                     title: "Details",
                 });
 
-                $(\' .expander \').click(function() {
+                $(\' .expander \').click(function(e) {
                    $(\'#dialog\').html($(this).parent().parent().find(\'div.content\').html());
                    $(\'#dialog\').dialog( "open" );
+                   e.preventDefault();
                 });
 
                 var container = document.querySelector(\'#container\');
