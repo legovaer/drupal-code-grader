@@ -11,7 +11,6 @@ namespace legovaer;
 
 class AnalysisParser {
   private $loc_file;
-  private $build_file;
   private $checkstyle_file;
   private $pmd_file;
   private $dry_file;
@@ -24,10 +23,6 @@ class AnalysisParser {
 
   public function setLocFile($loc_file) {
     $this->loc_file = $loc_file;
-  }
-
-  public function setBuildFile($build_file) {
-    $this->build_file = $build_file;
   }
 
   public function setCheckStyleFile($checkstyle_file) {
@@ -52,23 +47,19 @@ class AnalysisParser {
 
   private function checkDefaultFiles() {
     if (file_exists('src/phploc.csv')) {
-      $this->loc_file = 'phploc.csv';
-    }
-
-    if (file_exists('src/build.xml')) {
-      $this->build_file = 'build.xml';
+      $this->loc_file = 'src/phploc.csv';
     }
 
     if (file_exists('src/checkstyle-warnings.xml')) {
-      $this->checkstyle_file = 'checkstyle-warnings.xml';
+      $this->checkstyle_file = 'src/checkstyle-warnings.xml';
     }
 
     if (file_exists('src/dry-warnings.xml')) {
-      $this->dry_file = 'dry-warnings.xml';
+      $this->dry_file = 'src/dry-warnings.xml';
     }
 
     if (file_exists('src/pmd-warnings.xml')) {
-      $this->pmd_file = 'pmd-warnings.xml';
+      $this->pmd_file = 'src/pmd-warnings.xml';
     }
   }
 
