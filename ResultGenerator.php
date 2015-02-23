@@ -291,6 +291,7 @@ class ResultGenerator {
                 $(\'#dialog\').dialog({
                     autoOpen: false,
                     title: "Details",
+                    position: { my: "top" }
                 });
 
                 $(\' .expander \').click(function(e) {
