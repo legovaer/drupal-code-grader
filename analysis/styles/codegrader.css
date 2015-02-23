@@ -1,0 +1,134 @@
+body {
+    color: #444;
+    font: 90%/12px 'Helvetica Neue Light', helvetica, arial, sans-serif;
+    background: #294F6D;
+
+    text-align: center;
+    min-height: 100vh;
+}
+div.widget {
+    background-color: #FFF;
+    width: 23%;
+    min-width: 250px;
+    border: 1px solid #042037;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px 0;
+
+}
+
+div.results {
+    text-align: left;
+}
+
+div.details {
+    float: left;
+    text-align: left;
+    padding-left: 30px;
+}
+
+div.widget.big {
+    width: 100%;
+}
+
+
+div.widget.big > .gauge {
+    float: left;
+}
+
+div.widget h2 {
+    text-transform: uppercase;
+    color: #666;
+    text-align: center;
+    font-size: 80%
+}
+
+div.results {
+    padding: 10px 30px 30px 30px;
+    font-size: 60%;
+}
+
+span.ui-dialog-title {
+    font-size: 80%;
+}
+
+h3 {
+    font-size: 100%;
+    margin-bottom: 5px;
+}
+
+div.title {
+    width: 100%;
+    margin: auto;
+    padding: 2px 0 2px 0;
+    background-color: #DDD;
+}
+
+div#container {
+    margin: 0px auto;
+}
+
+div.gauge {
+    width:200px;
+    height:160px;
+    margin: auto;
+}
+
+div.more a, div.more a:active, div.more a:visited {
+    color: #ccc;
+    text-decoration: none;
+}
+
+
+div.more a:hover {
+    text-decoration: underline;
+    color: #31a1b7;
+}
+
+div.more {
+    text-align: right;
+    font-size: 50%;
+    padding-right: 15px;
+    margin-bottom: 10px;
+}
+
+div.grade {
+    border: 2px solid;
+    margin-top: 2px;
+    padding: 10px;
+    font-size: 150%;
+    width: 30px;
+    text-align: center;
+}
+
+div.grade.a, div.grade.a-plus {
+    border-color: #4bb648;
+}
+
+div.content {
+    display: none;
+}
+
+.a, .a-plus {
+    color: #4bb648;
+}
+
+.b {
+    color: #fbd109;
+}
+
+.c {
+    color: #ff8000;
+}
+
+.d {
+    color: #E26326;
+}
+
+.e {
+    color: #e02629;
+}
+
+.results table {
+    width: 100%;
+}
