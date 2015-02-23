@@ -23,7 +23,7 @@ class ResultGenerator {
 
 
   private function getFullMetricName($metric_name) {
-    foreach ($this->analysis->grades as $grade) {
+    foreach ($this->analysis['grades'] as $grade) {
       if ($grade['metric'] == $metric_name) {
         return $grade['full_metric_name'];
       }
@@ -31,7 +31,7 @@ class ResultGenerator {
   }
 
   private function getScoreByMetric($metric_name) {
-    foreach ($this->analysis->grades as $grade) {
+    foreach ($this->analysis['grades'] as $grade) {
       if ($grade['metric'] == $metric_name) {
         return $grade['score'];
       }
@@ -101,7 +101,7 @@ class ResultGenerator {
   }
 
   private function getStandardDifference($metric) {
-    if($this->standardIsReverse($metric)) {
+    if ($this->standardIsReverse($metric)) {
       return $this->standards[$metric]['a+'] - $this->standards[$metric]['a'];
     }
     else {
@@ -111,7 +111,7 @@ class ResultGenerator {
 
   private function generateStandardsTable($metric) {
     $rows = '';
-    foreach($this->standards[$metric] as $grade => $value) {
+    foreach ($this->standards[$metric] as $grade => $value) {
       $next_prev = $this->getNextAndPrevGrade($grade);
 
       $start_value = $value;
@@ -168,9 +168,9 @@ class ResultGenerator {
       "d" => 2,
       "e" => 1,
     );
-    $class = $this->analysis->overall == "a+" ? 'a-plus' : $this->analysis->overall;
+    $class = $this->analysis['overall'] == "a+" ? 'a-plus' : $this->analysis['overall'];
 
-    $score = $scores[$this->analysis->overall];
+    $score = $scores[$this->analysis['overall']];
     $javascript = '
             var goverall = new JustGage({
               id: "gauge-overall",
@@ -196,7 +196,7 @@ class ResultGenerator {
             </div>
             <div class="details">
               <h3>Overall Grade</h3>
-              <div class="grade ' . $class . '">' . strtoupper($this->analysis->overall) . '</div>
+              <div class="grade ' . $class . '">' . strtoupper($this->analysis['overall']) . '</div>
               <h3>Conclusion</h3>
               ' . $this->getConclusion() . '
             </div>
@@ -207,7 +207,7 @@ class ResultGenerator {
   }
 
   private function getConclusion() {
-    switch($this->analysis->overall) {
+    switch ($this->analysis['overall']) {
       case 'a+':
         return 'Code is perfect. No remarks necessary.';
 
@@ -236,8 +236,8 @@ class ResultGenerator {
     $level_colors = '["#4bb648", "#4bb648", "#fbd109", "#ff8000", "#E26326", "#e02629"]';
 
 
-    foreach ($this->analysis->grades as $metric) {
-      if($this->standardIsReverse($metric['metric'])) {
+    foreach ($this->analysis['grades'] as $metric) {
+      if ($this->standardIsReverse($metric['metric'])) {
         $colors = $level_colors_reverse;
         $min = $this->getStandardMaxValue($metric['metric']);
         $max = $this->getStandardMinValue($metric['metric']);
@@ -271,7 +271,7 @@ class ResultGenerator {
     $overall = $this->generateOverallWidget();
 
 
-    $html = '
+    $html = <<<EOT
     <!DOCTYPE html>
     <html>
     <head>
@@ -285,9 +285,10 @@ class ResultGenerator {
        <script src="js/masonry.pkgd.min.js"></script>
        <script type="text/javascript">
            $(document).ready(function () {';
+EOT;
     $html .= $javascript;
     $html .= $overall['javascript'];
-    $html .= '
+    $html .= <<<EOT
                 $(\'#dialog\').dialog({
                     autoOpen: false,
                     title: "Details",
@@ -312,6 +313,7 @@ class ResultGenerator {
     <body>
         <div id="dialog"></div>
         <div id="container">';
+EOT;
     $html .= $overall['widget'];
     $html .= $widgets;
     $html .= '

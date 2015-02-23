@@ -50,7 +50,7 @@ class CLI {
     $analysis = $parser->analyze();
 
     $grader = new Grader($analysis);
-    $grader->analyze();
+    $analysis = $grader->analyze();
     $standards = $grader->getStandards();
     $result = new \legovaer\ResultGenerator();
     $result->setAnalysis($analysis, $standards, $this->arguments['title']);
