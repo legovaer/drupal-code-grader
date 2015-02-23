@@ -85,6 +85,16 @@ class Grader {
       "e" => 0.08,
     ),
   );
+  private $metrics = array(
+    CSHIGH,
+    CSNORMAL,
+    TESTING,
+    CYCLOCOMPLEX,
+    DUPCODE,
+    PMDHIGH,
+    PMDLOW,
+    CLOC,
+  );
 
   public function __construct($results) {
     $this->extractValuesFromAnalysis($results);
@@ -153,7 +163,10 @@ class Grader {
     return $grade;
   }
 
-  public function analyze($metric) {
+  public function analyze($metric = NULL) {
+    if(is_null($metric)) {
+      $metric = $this->metrics;
+    }
     if (is_array($metric)) {
       $grades = array();
       foreach ($metric as $single_metric) {
@@ -170,7 +183,10 @@ class Grader {
     }
   }
 
-  public function getStandards($metrics) {
+  public function getStandards($metrics = NULL) {
+    if(is_null($metrics)) {
+      $metrics = $this->metrics;
+    }
     $standards = array();
 
     foreach ($metrics as $metric) {
