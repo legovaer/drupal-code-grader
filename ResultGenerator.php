@@ -284,35 +284,35 @@ class ResultGenerator {
        <script src="js/justgage.1.0.1.min.js"></script>
        <script src="js/masonry.pkgd.min.js"></script>
        <script type="text/javascript">
-           $(document).ready(function () {';
+           $(document).ready(function () {
 EOT;
     $html .= $javascript;
     $html .= $overall['javascript'];
     $html .= <<<EOT
-                $(\'#dialog\').dialog({
+                $('#dialog').dialog({
                     autoOpen: false,
                     title: "Details",
                     position: { my: "top" }
                 });
 
-                $(\' .expander \').click(function(e) {
-                   $(\'#dialog\').html($(this).parent().parent().find(\'div.content\').html());
-                   $(\'#dialog\').dialog( "open" );
+                $(' .expander ').click(function(e) {
+                   $('#dialog').html($(this).parent().parent().find('div.content').html());
+                   $('#dialog').dialog( "open" );
                    e.preventDefault();
                 });
 
-                var container = document.querySelector(\'#container\');
+                var container = document.querySelector('#container');
                 var msnry = new Masonry( container, {
                   // options
                   columnWidth: 50,
-                  itemSelector: \'.widget\'
+                  itemSelector: '.widget'
                  });
              });
         </script>
     </head>
     <body>
         <div id="dialog"></div>
-        <div id="container">';
+        <div id="container">
 EOT;
     $html .= $overall['widget'];
     $html .= $widgets;
