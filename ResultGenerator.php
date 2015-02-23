@@ -18,7 +18,6 @@ class ResultGenerator {
     $this->analysis = $analysis;
     $this->standards = $standards;
     $this->title = $title;
-    echo print_r($standards,TRUE);
   }
 
 
